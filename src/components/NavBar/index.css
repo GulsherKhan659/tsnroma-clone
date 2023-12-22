@@ -1,4 +1,26 @@
 .navbar{
     padding: 0 !important;
-    height: 42px;
+    background: #1a2e67;
+    color: #fff;
 }
+.list-item{
+    color: #fff;
+    margin: 0 20px 0 0;
+    border: 0;
+    padding: 12px 0;
+    color: #fff;
+    font-size: 13px;
+    line-height: 12px;
+    font-family: Montserrat-Medium,sans-serif;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.navbar-toggler:focus {
+    text-decoration: none;
+    outline: 0;
+    box-shadow: none !important;
+}
+.active {
+    border-bottom: 1px solid red;
+  }
+  

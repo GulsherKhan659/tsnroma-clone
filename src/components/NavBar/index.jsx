@@ -1,26 +1,48 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
+import { Navbar, Container, Nav } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 import "./index.css";
-
+const menuData = [
+  { path: "/", name: "Home" },
+  { path: "/whoWeAre", name: "Chi Siamo" },
+  { path: "/registration", name: "Iscrizione" },
+  { path: "/activity", name: "Attività" },
+  { path: "/timetable", name: "Orari" },
+  { path: "/structure", name: "Struttura" },
+  { path: "/news", name: "News" },
+];
 function BasicExample() {
   return (
     <>
-      <Navbar expand="lg" className="bg-body-tertiary">
-      <Container fluid>
-        <Navbar.Toggle aria-controls="navbarScroll" />
-        <Navbar.Collapse id="navbarScroll">
-          <Nav
-            className="me-auto my-2 my-lg-0"
-            style={{ maxHeight: '100px' }}
-            navbarScroll
-          >
-            <Nav.Link href="#action1">Home</Nav.Link>
-            <Nav.Link href="#action2">Link</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+      <Navbar expand="lg" variant={"dark"}>
+        <Container fluid>
+          <Navbar.Toggle
+            style={{ border: "none" }}
+            className="ms-auto"
+            aria-controls="navbarScroll"
+          />
+          <Navbar.Collapse id="navbarScroll">
+            <Nav className="me-auto my-2 my-lg-0">
+            {
+                    menuData.map((item, index) => (
+                        <Nav.Link  to={item.path} key={index}>
+                            <div className="list-item">{item.name}</div>
+                        </Nav.Link>
+                    ))
+                }
+              {/* {menuData.map((item, index) => (
+                <NavLink
+                  to={item.path}
+                  key={index}
+                  className="nav-link"
+                  activeClassName="active"
+                >
+                  <div className="list-item">{item.name}</div>
+                </NavLink>
+              ))} */}
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
     </>
   );
 }
