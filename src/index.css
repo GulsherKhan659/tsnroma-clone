@@ -1,13 +1,68 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+a {
+  text-decoration: none !important;
+}
+@font-face {
+  font-family: 'Montserrat-Regular';
+  src: url('./assets/fonts/Montserrat-Regular.ttf');
+}
+@font-face {
+  font-family: 'Montserrat-Bold';
+  src: url('./assets/fonts/Montserrat-Bold.ttf');
+}
+@font-face {
+  font-family: 'Montserrat-Medium';
+  src: url('./assets/fonts/Montserrat-Medium.ttf');
+}
+@font-face {
+  font-family: 'Montserrat-SemiBold';
+  src: url('./assets/fonts/Montserrat-SemiBold.ttf');
+}
+body {
+  background-color: #2d52ad !important;
+  font-family: Lato,sans-serif;
+  font-size: 14px
+}
+
+h1,h2,h3,h4 {
+  font-family: Montserrat,sans-serif;
+  line-height: 1.2
+}
+
+h1 {
+  font-size: 24px;
+  text-transform: uppercase
+}
+
+h2 {
+  font-size: 18px;
+  text-transform: uppercase
+}
+
+h3 {
+  font-size: 16px;
+  text-transform: uppercase
+}
+
+h4,h5 {
+  font-size: 14px;
+  text-transform: uppercase
+}
+.row {
+  margin-right: 0 !important; 
+  margin-left: 0 !important; 
+}
+
+.col {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+.container{
+  padding-right: 0 !important;
+  padding-left: 0 !important;
 }

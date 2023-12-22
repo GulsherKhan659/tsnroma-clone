@@ -1,0 +1,43 @@
+.logo{
+    float: left;
+}
+.header{
+    padding: 15px 0;
+}
+.header h1,
+.header h2 {
+  color: #fff;
+  margin: 0;
+  font-size: 14px;
+}
+
+.header h1 {
+  font-weight: 700;
+  font-family: Montserrat-Bold;
+}
+
+.header h2 {
+  font-family: Montserrat-Medium;
+  font-weight: 400;
+}
+
+.logo {
+    width: 48px;
+    height: 48px;
+    margin: 8px 12px 8px 20px;
+}
+
+@media all and (min-width: 768px) {
+  .header {
+    margin: 26px 0px;
+    padding: 31px 0;
+  }
+  .logo {
+    width: 96px;
+    height: 96px;
+  }
+  .header h1,
+  .header h2 {
+    font-size: 20px;
+  }
+}
