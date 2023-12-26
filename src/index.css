@@ -26,7 +26,8 @@ a {
 body {
   background-color: #2d52ad !important;
   font-family: Lato,sans-serif;
-  font-size: 14px
+  font-size: 14px;
+  color: #333;
 }
 
 h1,h2,h3,h4 {
@@ -66,3 +67,9 @@ h4,h5 {
   padding-right: 0 !important;
   padding-left: 0 !important;
 }
+
+/* @media (min-width: 1400px) {
+  .container {
+      max-width:1200px !important;
+  }
+} */

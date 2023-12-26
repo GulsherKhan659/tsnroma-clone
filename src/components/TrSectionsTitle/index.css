@@ -1,0 +1,11 @@
+.sectionTitle{
+    background-color: #2d52ad;
+}
+.sectionTitle h2{
+    color: #fff;
+    padding: 9px;
+    margin: 0 0 10px;
+    line-height: 1;
+    font-size: 18px;
+    text-transform: uppercase;
+}

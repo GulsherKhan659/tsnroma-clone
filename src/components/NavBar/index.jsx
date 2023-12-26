@@ -10,9 +10,9 @@ const menuData = [
   { path: "/structure", name: "Struttura" },
   { path: "/news", name: "News" },
 ];
-function BasicExample() {
+function TnsromaNavbar() {
   return (
-    <>
+      <Container>
       <Navbar expand="lg" variant={"dark"}>
         <Container fluid>
           <Navbar.Toggle
@@ -22,14 +22,7 @@ function BasicExample() {
           />
           <Navbar.Collapse id="navbarScroll">
             <Nav className="me-auto my-2 my-lg-0">
-            {
-                    menuData.map((item, index) => (
-                        <Nav.Link  to={item.path} key={index}>
-                            <div className="list-item">{item.name}</div>
-                        </Nav.Link>
-                    ))
-                }
-              {/* {menuData.map((item, index) => (
+              {menuData.map((item, index) => (
                 <NavLink
                   to={item.path}
                   key={index}
@@ -38,13 +31,13 @@ function BasicExample() {
                 >
                   <div className="list-item">{item.name}</div>
                 </NavLink>
-              ))} */}
+              ))}
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
-    </>
+      </Container>
   );
 }
 
-export default BasicExample;
+export default TnsromaNavbar;

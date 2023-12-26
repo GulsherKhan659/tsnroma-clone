@@ -1,0 +1,28 @@
+.custom-row {
+  margin-left: -10px !important;
+  margin-right: -10px !important;
+}
+.ads-date-box{
+  margin-bottom: 20px;
+  float: left;
+  width: 52px;
+  padding: 7px;
+  margin-right: 10px;
+  color: #fff;
+  text-align: center;
+  background: #ec1c24;
+}
+.ads-date-box .ads-day {
+  display: block;
+  padding: 0 0 2px;
+  font-size: 24px;
+  line-height: 1;
+  border-bottom: 1px solid #fff;
+}
+.custom-col {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+#PRENOTAZIONI{
+  background-color: #00a551 !important;
+}
