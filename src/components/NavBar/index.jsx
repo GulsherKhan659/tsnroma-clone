@@ -3,11 +3,11 @@ import { NavLink } from "react-router-dom";
 import "./index.css";
 const menuData = [
   { path: "/", name: "Home" },
-  { path: "/whoWeAre", name: "Chi Siamo" },
-  { path: "/registration", name: "Iscrizione" },
-  { path: "/activity", name: "Attività" },
-  { path: "/timetable", name: "Orari" },
-  { path: "/structure", name: "Struttura" },
+  { path: "/chi-siamo", name: "Chi Siamo" },
+  { path: "/iscrizione", name: "Iscrizione" },
+  { path: "/attività", name: "Attività" },
+  { path: "/orari", name: "Orari" },
+  { path: "/struttura", name: "Struttura" },
   { path: "/news", name: "News" },
 ];
 function TnsromaNavbar() {

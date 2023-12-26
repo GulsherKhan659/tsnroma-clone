@@ -1,0 +1,39 @@
+.tnsFooter {
+  font-family: Lato, sans-serif;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+.tnsFooter p {
+  margin-bottom: 2px;
+}
+.tnsFooter a {
+  text-decoration: none;
+  color: #2d52ad;
+}
+footer {
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #777;
+}
+footer img.FooterLogo {
+  width: 55px;
+  float: left;
+  margin-right: 10px;
+  height: auto;
+}
+.credits {
+  overflow: hidden;
+}
+.credits p {
+  margin: 0;
+  font-size: 12px;
+}
+.custom-col {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.custom-row {
+  margin-left: -10px !important;
+  margin-right: -10px !important;
+}

@@ -26,3 +26,13 @@
 #PRENOTAZIONI{
   background-color: #00a551 !important;
 }
+.custom-col-map{
+  padding: 0 !important;
+}
+#activityCard{
+  background-color: #1a2e67 !important;
+}
+.activityItem{
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}

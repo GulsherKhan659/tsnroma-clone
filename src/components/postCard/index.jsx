@@ -23,7 +23,7 @@ const PostCard = ({ postItem }) => {
             <div>
               <div className="preview">
                 <h3>
-                  <Link to={post.postPath}>{post.postTitle}</Link>
+                  <Link className="previewLink" to={post.postPath}>{post.postTitle}</Link>
                 </h3>
                 {post.postDiscritption && <p>{post.postDiscritption}</p>}
                 <Link to={post.postPath}>Leggi la news »</Link>

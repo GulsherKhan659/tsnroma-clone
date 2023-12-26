@@ -67,7 +67,14 @@ h4,h5 {
   padding-right: 0 !important;
   padding-left: 0 !important;
 }
-
+.custom-row {
+  margin-left: -10px !important;
+  margin-right: -10px !important;
+}
+.custom-col {
+  padding-left: 10px;
+  padding-right: 10px;
+}
 /* @media (min-width: 1400px) {
   .container {
       max-width:1200px !important;

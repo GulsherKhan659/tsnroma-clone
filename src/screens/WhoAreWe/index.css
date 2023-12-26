@@ -1,0 +1,35 @@
+.TabsOption{
+    border-radius: 0 !important;
+    display: block;
+    padding: 14px 15px;
+    margin-bottom: -1px;
+    border: 1px solid #ddd;
+    color: #777;
+    font-family: Montserrat-Medium,sans-serif;
+    font-size: 14px;
+}
+.TabsOption:hover{
+    text-decoration: none;
+    color: #555;
+    background-color: #f5f5f5;
+}
+.nav-link.active{
+    border-color: #337ab7;
+}
+.TabsPane{
+    color: #555;
+    font-family: Montserrat-Medium,sans-serif;
+    font-size: 14px;
+}
+.tab-content > .active {
+    border: none !important;
+}
+.chiTabsData{
+    margin: 40px 0;;
+}
+.chiTabsData h3{
+    color: #000;
+    font-family: Montserrat-Medium,sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+}

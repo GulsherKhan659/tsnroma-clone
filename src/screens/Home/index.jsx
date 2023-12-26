@@ -7,7 +7,11 @@ import HomePostImage from "../../assets/images/homePostimage.jpg";
 import "./index.css";
 import { Link } from "react-router-dom";
 import PostCard from "../../components/postCard";
-
+import TnsromaFooter from "../../components/Footer";
+import ActivityImage1 from "../../assets/images/attivita-certificatoria-alt.jpg";
+import ActivityImage2 from "../../assets/images/attivita-ludica.jpg";
+import ActivityImage3 from "../../assets/images/attivita-sportiva.jpg";
+ 
 const postData = [
   {
     postImage: HomePostImage,
@@ -110,7 +114,8 @@ const postData = [
 ];
 
 const Home = () => {
-  const iframeSrc = "https://maps.google.com/maps?q=Viale+di+Tor+di+Quinto%2C+63+-+00191+Roma&t=&z=13&ie=UTF8&iwloc=&output=embed";
+  const iframeSrc =
+    "https://maps.google.com/maps?q=Viale+di+Tor+di+Quinto%2C+63+-+00191+Roma&t=&z=13&ie=UTF8&iwloc=&output=embed";
   return (
     <Container>
       <section style={{ backgroundColor: "#fff", padding: "0 20px" }}>
@@ -122,8 +127,8 @@ const Home = () => {
           </Col>
           <Col lg={4} className="custom-col">
             <SectionTitle title={"ANNUNCI"} />
-            <Row>
-              <Col lg={2}>
+            <Row className="custom-row">
+              <Col className="custom-col" lg={2}>
                 <div className="ads-date-box">
                   <span className="ads-day">17</span>
                   <span className="ads-month">DIC</span>
@@ -155,15 +160,15 @@ const Home = () => {
                 </div>
               </Col>
             </Row>
-            <Row>
-              <Col lg={2}>
+            <Row className="custom-row">
+              <Col className="custom-col" lg={2}>
                 <div className="ads-date-box">
                   <span className="ads-day">17</span>
                   <span className="ads-month">DIC</span>
                 </div>
               </Col>
               <Col lg={10}>
-                <div class="preview">
+                <div className="preview">
                   <h3>Chiusure Festività Natalizie</h3>
                   <p>
                     Si informano i Soci che, durante le prossime festività
@@ -182,15 +187,15 @@ const Home = () => {
                 </div>
               </Col>
             </Row>
-            <Row>
-              <Col lg={2}>
+            <Row className="custom-row">
+              <Col className="custom-col" lg={2}>
                 <div className="ads-date-box">
                   <span className="ads-day">17</span>
                   <span className="ads-month">DIC</span>
                 </div>
               </Col>
               <Col lg={10}>
-                <div class="preview">
+                <div className="preview">
                   <h3>Chiusura 6 e 7 dicembre</h3>
                   <p>
                     Si avvisano i Soci che il 6 e 7 dicembre p.v., dalle ore
@@ -200,15 +205,15 @@ const Home = () => {
                 </div>
               </Col>
             </Row>
-            <Row>
-              <Col lg={2}>
+            <Row className="custom-row"> 
+              <Col className="custom-col" lg={2}>
                 <div className="ads-date-box">
                   <span className="ads-day">17</span>
                   <span className="ads-month">DIC</span>
                 </div>
               </Col>
               <Col lg={10}>
-                <div class="preview">
+                <div className="preview">
                   <h3>Chiusura 8 dicembre</h3>
                   <p>
                     Si avvisano i Soci che in occasione della festività dell'8
@@ -218,15 +223,15 @@ const Home = () => {
                 </div>
               </Col>
             </Row>
-            <Row>
-              <Col lg={2}>
+            <Row className="custom-row">
+              <Col className="custom-col" lg={2}>
                 <div className="ads-date-box">
                   <span className="ads-day">17</span>
                   <span className="ads-month">DIC</span>
                 </div>
               </Col>
               <Col lg={10}>
-                <div class="preview">
+                <div className="preview">
                   <h3>Chiusura poligono 50m</h3>
                   <p>
                     Si avvisano i Soci che mercoledì 6 dicembre p.v., il
@@ -236,15 +241,15 @@ const Home = () => {
                 </div>
               </Col>
             </Row>
-            <Row>
-              <Col lg={2}>
+            <Row className="custom-row">
+              <Col className="custom-col" lg={2}>
                 <div className="ads-date-box">
                   <span className="ads-day">17</span>
                   <span className="ads-month">DIC</span>
                 </div>
               </Col>
               <Col lg={10}>
-                <div class="preview">
+                <div className="preview">
                   <h3>Disponibilità cartucce</h3>
                   <p>
                     Si comunica che le cartucce calibro 22LR Lapua Rifle Match,
@@ -282,13 +287,43 @@ const Home = () => {
           <Col lg={4} className="custom-col">
             <SectionTitle title={"CONTATTI"} />
             <Row>
-              <Col lg={12}>
+              <Col lg={12} className="custom-col-map">
                 <div className="mapouter">
-                  <div className="gmap_canvas" dangerouslySetInnerHTML={{ __html: `<iframe width="383" height="290" src="${iframeSrc}" frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0"></iframe>` }} />
+                  <div
+                    className="gmap_canvas"
+                    dangerouslySetInnerHTML={{
+                      __html: `<iframe width="100%" height="230" src="${iframeSrc}" frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0"></iframe>`,
+                    }}
+                  />
                 </div>
               </Col>
             </Row>
+            <TnsromaFooter />
           </Col>
+        </Row>
+        <Row className="custom-row">
+          <Col className="custom-col" lg={12}>
+            <SectionTitle title="ATTIVITÀ" />
+          </Col>
+        </Row>
+        <Row className="custom-row">
+          <Col lg={4} className="custom-col">
+              <SectionTitle title="CERTIFICATORIA" id="activityCard" />
+              <Link to="https://www.tsnroma.it/attivita/certificatoria">
+                <Image src={ActivityImage1} width="100%" />
+              </Link>
+          </Col>
+          <Col lg={4} className="custom-col">
+              <SectionTitle title="SPORTIVA" id="activityCard" />
+              <Image src={ActivityImage3} width="100%" />
+          </Col>
+          <Col lg={4} className="custom-col">
+              <SectionTitle title="LUDICA" id="activityCard" />
+              <Image src={ActivityImage2} width="100%" />
+          </Col>
+        </Row>
+        <Row>
+          <TnsromaFooter isFooter />
         </Row>
       </section>
     </Container>
