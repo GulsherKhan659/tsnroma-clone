@@ -31,3 +31,9 @@
 .chiTabsData h3{
     color: #000;
 }
+.faq h4{
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: Montserrat-Medium,sans-serif;
+}

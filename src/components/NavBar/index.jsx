@@ -5,7 +5,7 @@ const menuData = [
   { path: "/", name: "Home" },
   { path: "/chi-siamo", name: "Chi Siamo" },
   { path: "/iscrizione", name: "Iscrizione" },
-  { path: "/attività", name: "Attività" },
+  { path: "/attivita", name: "Attività" },
   { path: "/orari", name: "Orari" },
   { path: "/struttura", name: "Struttura" },
   { path: "/news", name: "News" },

@@ -31,7 +31,7 @@ body {
 }
 
 h1,h2,h3,h4 {
-  font-family: Montserrat,sans-serif;
+  font-family: Montserrat-Medium,sans-serif;
   line-height: 1.2
 }
 
@@ -51,7 +51,7 @@ h3 {
 }
 
 h4,h5 {
-  font-size: 14px;
+  font-size: 14px !important;
   text-transform: uppercase
 }
 .row {
@@ -74,6 +74,50 @@ h4,h5 {
 .custom-col {
   padding-left: 10px;
   padding-right: 10px;
+}
+.chiTabsData{
+  margin: 40px 0;
+}
+.chiTabsData p{
+  font-size: 14px;
+  line-height: 20px;
+}
+.chiTabsData h3{
+  color: #000;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+.chiTabsData h4{
+  color: #000;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.TabsOption{
+  border-radius: 0 !important;
+  display: block;
+  padding: 14px 15px;
+  margin-bottom: -1px;
+  border: 1px solid #ddd;
+  color: #777;
+  font-family: Montserrat-Medium,sans-serif;
+  font-size: 14px;
+}
+.TabsOption:hover{
+  text-decoration: none;
+  color: #555;
+  background-color: #f5f5f5;
+}
+.nav-link.active{
+  border-color: #337ab7;
+  background-color: #2d52ad !important;
+}
+.TabsPane{
+  color: #555;
+  font-family: Montserrat-Medium,sans-serif;
+  font-size: 14px;
+}
+.tab-content > .active {
+  border: none !important;
 }
 /* @media (min-width: 1400px) {
   .container {
