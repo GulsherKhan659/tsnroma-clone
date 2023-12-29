@@ -19,11 +19,11 @@ function App() {
         <TnsromaNavbar />
         <Routes>
           <Route path="/" element={<Home />}/>
-          <Route path="/chi-siamo" element={<ChiSiamo />} />
-          <Route path="/iscrizione" element={<Iscrizione />} />
-          <Route path="/attivita" element={<Attività />} />
+          <Route path="/chi-siamo/*" element={<ChiSiamo />} />
+          <Route path="/iscrizione/*" element={<Iscrizione />} />
+          <Route path="/attivita/*" element={<Attività />} />
           <Route path="/orari" element={<Orari />} />
-          <Route path="/struttura" element={<Struttura />} />
+          <Route path="/struttura/*" element={<Struttura />} />
           <Route path="/news" element={<News />} />
         </Routes>
     </div>

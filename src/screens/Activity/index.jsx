@@ -1,25 +1,33 @@
-import React, { useState } from "react";
-import { Col, Container, Nav, Row, Tab } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Col, Container, Nav, Row, Tab, Table } from "react-bootstrap";
 import Banner from "../../components/Banner";
 import bannerImage from "../../assets/images/hero-sportiva.jpg";
 import SectionTitle from "../../components/TrSectionsTitle";
 import TnsromaFooter from "../../components/Footer";
 import "./index.css";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 const Attività = () => {
   const [activeTab, setActiveTab] = useState(null);
+  const location = useLocation();
+  const history = useNavigate();
 
-  console.log(activeTab);
-
+  useEffect(() => {
+    const isChiSiamoPage = location.pathname === '/attivita';
+    setActiveTab(isChiSiamoPage ? null : activeTab)
+  }, [location.pathname]);
   return (
     <Container>
       <section style={{ backgroundColor: "#fff", padding: "0 20px" }}>
-        <Banner bannerImage={bannerImage} />
+        <Banner bannerImage={bannerImage} activeTab={activeTab}/>
         <Tab.Container
           id="left-tabs-example"
           activeKey={activeTab}
-          onSelect={(key) => setActiveTab(key)}
+          onSelect={(key) => {
+            setActiveTab(key);
+            history(`${key.toLowerCase()}`);
+          }}
         >
           <Row>
             <Col sm={3}>
@@ -360,7 +368,450 @@ const Attività = () => {
                 </Tab.Pane>
                 <Tab.Pane className="TabsPane" eventKey="calendario-gare">
                   <SectionTitle title="CALENDARIO GARE" />
-                  
+                  <div className="chiTabsData">
+                  <p>Di seguito potrete trovare i programmi e i risultati delle gare degli anni precedenti.</p>
+                  <h3>Attività ISSF</h3>
+                  <Table responsive>
+               <thead>
+                   <tr>
+                       <th>
+                           <h4>Gara</h4>
+                       </th>
+                       <th>
+                           <h4 style={{textAlign:"center"}}>Data</h4>
+                       </th>
+                       <th>
+                           <h4 style={{textAlign:"center"}}>Programma</h4>
+                       </th>
+                       <th>
+                           <h4 style={{textAlign:"center"}}>Risultati</h4>
+                       </th>
+                   </tr>
+               </thead>
+               <tbody>
+                    <tr>
+                        <td>Campionato d'Inverno 2022 - 2a gara</td>
+                        <td style={{textAlign:"center"}}>12, 13, 19, 20 Nov 2022</td>
+                        <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Campionato d'Inverno 2022 - 2a gara - Programma.pdf">Programma</a></td>
+                        <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Campionato d'Inverno 2022 - 2a gara - Classifica.pdf">Classifica</a></td>
+                    </tr>
+                    <tr>
+                    </tr><tr>
+                        <td>Campionato d'Inverno 2022</td>
+                        <td style={{textAlign:"center"}}>22, 23, 29, 30 Ott 2022</td>
+                        <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Campionato d'Inverno 2022 - Programma.pdf">Programma</a></td>
+                        <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Campionato d'Inverno 2022 - Classifica.pdf">Classifica</a></td>
+                    </tr>
+                    <tr>
+                        <td>4° Trofeo Nazionale Ranking 2022</td>
+                        <td style={{textAlign:"center"}}>8, 9, 15, 16 Ott 2022</td>
+                        <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/4 Trofeo Nazionale Ranking 2022 - Programma.pdf">Programma</a></td>
+                        <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/4 Trofeo Nazionale Ranking 2022 - Classifica.pdf">Classifica</a></td>
+                    </tr><tr>
+                    </tr><tr>
+                        <td>Campionato Italiano 2022 Production - 8a Gara</td>
+                        <td style={{textAlign:"center"}}>30, 31 Lug 2022</td>
+                        <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Campionato Italiano 2022 Production - 8a Gara - Programma.pdf">Programma</a></td>
+                        <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Campionato Italiano 2022 Production - 8a Gara - Classifica.pdf">Classifica</a></td>
+                        </tr>
+                    <tr>
+                        <td>Campionato Italiano 2022 Production - 7a Gara</td>
+                        <td style={{textAlign:"center"}}>2, 3 Lug 2022</td>
+                        <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Campionato Italiano 2022 Production - 7a Gara - Programma.pdf">Programma</a></td>
+                        <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Campionato Italiano 2022 Production - 7a Gara - Classifica.pdf">Classifica</a></td>
+                    </tr>
+                    <tr>
+                        <td>Gara Regionale Federale 2022 - 5a Prova</td>
+                        <td style={{textAlign:"center"}}>12, 17, 18, 19 Giu 2022</td>
+                        <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2022 - 5a Prova - Programma.pdf">Programma</a></td>
+                        <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2022 - 5a Prova - Classifica.pdf">Classifica</a></td>
+                    </tr>
+                    <tr>
+                        <td>Gara Regionale Federale 2022 - 4a Prova</td>
+                        <td style={{textAlign:"center"}}>22, 27, 28, 29 Mag 2022</td>
+                        <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2022 - 4a Prova - Programma.pdf">Programma</a></td>
+                        <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2022 - 4a Prova - Classifica.pdf">Classifica</a></td>
+                    </tr>
+                    <tr>
+                        <td>2° Trofeo Nazionale Ranking 2022</td>
+                        <td style={{textAlign:"center"}}>30 Apr - 1, 7, 8 Mag 2022</td>
+                        <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/2 Trofeo Nazionale Ranking 2022 - Programma.pdf">Programma</a></td>
+                        <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/2 Trofeo Nazionale Ranking 2022 - Classifica.pdf">Classifica</a></td>
+                    </tr>
+                    <tr>
+                        <td>Gara Regionale Federale 2022 - 3a Prova</td>
+                        <td style={{textAlign:"center"}}>26, 27 Mar - 2, 3 Apr 2022</td>
+                        <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2022 - 3a Prova - Programma.pdf">Programma</a></td>
+                        <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2022 - 3a Prova - Classifica.pdf">Classifica</a></td>
+                    </tr>
+                    <tr>
+                        <td>Gara Provinciale 2022</td>
+                        <td style={{textAlign:"center"}}>19, 20 Mar 2022</td>
+                        <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Provinciale 2022 - Programma.pdf">Programma</a></td>
+                        <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Provinciale 2022 - Classifica.pdf">Classifica</a></td>
+                     </tr>
+                    <tr>
+                        <td>Gara Regionale Federale 2022 - 2a Prova</td>
+                        <td style={{textAlign:"center"}}>6, 12, 13 Mar 2022</td>
+                        <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2022 - 2a Prova - Programma.pdf">Programma</a></td>
+                        <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2022 - 2a Prova - Classifica.pdf">Classifica</a></td>
+                    </tr>
+                    <tr>
+                        <td>Gara Regionale Federale 2022 - 1a Prova</td>
+                        <td style={{textAlign:"center"}}>13, 19, 20 Feb 2022</td>
+                        <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2022 - 1a Prova - Programma.pdf">Programma</a></td>
+                        <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2022 - 1a Prova - Classifica.pdf">Classifica</a></td>
+                    </tr>
+                    <tr>
+                        <td>Campionato d'Inverno 2021 - 2a gara</td>
+                        <td style={{textAlign:"center"}}>20, 21, 27, 28 Nov 2021</td>
+                        <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Campionato d'Inverno 2021 2a gara - Programma.pdf">Programma</a></td>
+                        <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Campionato d'Inverno 2021 2a gara - Classifica.pdf">Classifica</a></td>
+                    </tr>
+                    <tr>
+                        <td>Campionato d'Inverno 2021</td>
+                        <td style={{textAlign:"center"}}>16, 17, 23, 24 Ott 2021</td>
+                        <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Campionato d'Inverno 2021 - Programma.pdf">Programma</a></td>
+                        <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Campionato d'Inverno 2021 - Classifica.pdf">Classifica</a></td>
+                    </tr>
+                    <tr>
+                      <td>Campionato Italiano 2021 Production - 5a Gara</td>
+                      <td style={{textAlign:"center"}}>11, 12 Set 2021</td>
+                      <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Campionato Italiano 2021 Production - 5a Gara - Programma.pdf">Programma</a></td>
+                      <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Campionato Italiano 2021 Production - 5a Gara - Classifica.pdf">Classifica</a></td>
+                    </tr>
+                    <tr>
+                      <td>Gara Regionale Federale 2021 - 5a Prova</td>
+                      <td style={{textAlign:"center"}}>4, 10, 11 Lug 2021</td>
+                      <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2021 - 5a Prova - Programma.pdf">Programma</a></td>
+                      <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2021 - 5a Prova - Classifica.pdf">Classifica</a></td>
+                    </tr>
+                    <tr>
+                      <td>Gara Regionale Federale 2021 - 4a Prova</td>
+                      <td style={{textAlign:"center"}}>6, 12, 13 Giu 2021</td>
+                      <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2021 - 4a Prova - Programma.pdf">Programma</a></td>
+                      <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2021 - 4a Prova - Classifica.pdf">Classifica</a></td>
+                    </tr>
+                    <tr>
+                      <td>Gara Regionale Federale 2021 - 3a Prova</td>
+                      <td style={{textAlign:"center"}}>2, 8, 9 Mag 2021</td>
+                      <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2021 - 3a Prova - Programma.pdf">Programma</a></td>
+                      <td style={{textAlign:"center"}}>
+                        <a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2021 - 3a Prova - Classifica.pdf">Classifica</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Gara Regionale Federale 2021 - 2a Prova</td>
+                      <td style={{textAlign:"center"}}>11, 17, 18 Apr 2021</td>
+                      <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2021 - 2a Prova - Programma.pdf">Programma</a></td>
+                      <td style={{textAlign:"center"}}>
+                        <a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2021 - 2a Prova - Classifica.pdf">Classifica</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Gara Regionale Federale 2021 - 1a Prova</td>
+                      <td style={{textAlign:"center"}}>6, 7 Mar 2021</td>
+                      <td style={{textAlign:"center"}}>-</td>
+                      <td style={{textAlign:"center"}}>
+                        <a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2021 - 1a Prova - Classifica.pdf">Classifica</a><br />
+                        <a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2021 - 1a Prova - Classifica Regione Virtuale.pdf">Classifica Regione Virtuale</a><br />
+                        <a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2021 - 1a Prova - Classifica Regione Para Virtuale.pdf">Classifica Regione Para Virtuale</a><br />
+                      </td>
+                   </tr>
+                   <tr>
+                      <td>Torneo Sociale 2020</td>
+                      <td style={{textAlign:"center"}}></td>
+                      <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Torneo Sociale 2020 - Programma.pdf">Programma</a></td>
+                      <td style={{textAlign:"center"}}>-</td>
+                   </tr>
+                   <tr>
+                      <td>Gara Provinciale 2020</td>
+                      <td style={{textAlign:"center"}}>21, 22 Mar 2020</td>
+                      <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Provinciale 2020 - Programma.pdf">Programma</a></td>
+                      <td style={{textAlign:"center"}}>-</td>
+                   </tr>
+                   <tr>
+                       <td>Gara Regionale Federale 2020 - 2a Prova</td>
+                       <td style={{textAlign:"center"}}>8, 14, 15 Mar 2020</td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2020 - 2a Prova - Programma.pdf">Programma</a></td>
+                       <td style={{textAlign:"center"}}>-</td>
+                   </tr> 
+                   <tr>
+                       <td>Gara Regionale Federale 2019 - 5a Prova</td>
+                       <td style={{textAlign:"center"}}></td>
+                       <td style={{textAlign:"center"}}>-</td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2019 - 5a Prova - Classifica.pdf">Classifica</a></td>
+                   </tr>
+                   <tr>
+                       <td>Gara Regionale Federale 2019 - 4a Prova</td>
+                       <td style={{textAlign:"center"}}></td>
+                       <td style={{textAlign:"center"}}>-</td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2019 - 4a Prova - Classifica.pdf">Classifica</a></td>
+                   </tr>
+                   <tr>
+                       <td>Gara Regionale Federale 2019 - 3a Prova</td>
+                       <td style={{textAlign:"center"}}></td>
+                       <td style={{textAlign:"center"}}>-</td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2019 - 3a Prova - Classifica.pdf">Classifica</a></td>
+                   </tr>
+                   <tr>
+                       <td>Gara Regionale Federale 2019 - 2a Prova</td>
+                       <td style={{textAlign:"center"}}></td>
+                       <td style={{textAlign:"center"}}>-</td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2019 - 2a Prova - Classifica.pdf">Classifica</a></td>
+                   </tr>
+                   <tr>
+                       <td>Gara Regionale Federale 2019 - 1a Prova</td>
+                       <td style={{textAlign:"center"}}></td>
+                       <td style={{textAlign:"center"}}>-</td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2019 - 1a Prova - Classifica.pdf">Classifica</a></td>
+                   </tr>
+                   <tr>
+                       <td>Gara Regionale Federale - 2a Prova</td>
+                       <td style={{textAlign:"center"}}>17, 18, 24, 25 Feb 2018</td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2018 - 2a Prova - Programma.pdf">Programma</a></td>
+                       <td style={{textAlign:"center"}}>-</td>
+                   </tr>
+                   <tr>
+                       <td>Gara Regionale Federale - 1a Prova</td>
+                       <td style={{textAlign:"center"}}>27, 28 Gen - 3, 4 Feb 2018</td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2018 - 1a Prova - Programma.pdf">Programma</a></td>
+                       <td style={{textAlign:"center"}}>
+                         <a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2018 - 1a Prova - Classifica.pdf">Classifica</a><br />
+                         <a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2018 - 1a Prova - Classifica Para.pdf">Classifica Para</a>
+                       </td>
+                   </tr>
+                   <tr>
+                       <td>Campionato d'Inverno 2017</td>
+                       <td style={{textAlign:"center"}}>28, 29 Ott - 18, 19 Nov 2017</td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Campionato d'Inverno 2017 - Programma.pdf">Programma</a></td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Campionato d'Inverno 2017 - Risultati 1a prova.pdf">Risultati 1a prova</a></td>
+                   </tr>
+                   <tr>
+                       <td>3° Trofeo Nazionale Ranking 2017</td>
+                       <td style={{textAlign:"center"}}>24, 25 Giu - 1, 2 Lug 2017</td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/3 Trofeo Nazionale Ranking 2017 - Programma.pdf">Programma</a></td>
+                       <td style={{textAlign:"center"}}>-</td>
+                   </tr>
+                   <tr>
+                       <td>Gara Regionale Federale - 4a Prova</td>
+                       <td style={{textAlign:"center"}}>10, 11, 17, 18 Giu 2017</td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2017 - 4a Prova - Programma.pdf">Programma</a></td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2017 - 4a Prova - Classifica.pdf">Classifica</a></td>
+                   </tr>
+                   <tr>
+                       <td>Gara Regionale Federale - 3a Prova</td>
+                       <td style={{textAlign:"center"}}>6, 7, 13, 14 Mag 2017</td>
+                       <td style={{textAlign:"center"}}>-</td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2017 - 3a Prova - Classifica.pdf">Classifica</a></td>
+                   </tr>
+                   <tr>
+                       <td>Gara Regionale Federale - 2a Prova (solo 10MT)</td>
+                       <td style={{textAlign:"center"}}>26 Mar - 1, 2 Apr 2017</td>
+                       <td style={{textAlign:"center"}}>-</td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2017 - 2a Prova - Classifica.pdf">Classifica</a></td>
+                   </tr>
+                   <tr>
+                       <td>Gara Provinciale 2017</td>
+                       <td style={{textAlign:"center"}}>18, 19 Mar 2017</td>
+                       <td style={{textAlign:"center"}}>-</td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Provinciale 2017 - Classifica.pdf">Classifica</a></td>
+                   </tr>
+                   <tr>
+                       <td>Gara Regionale Federale - 1a Prova (solo 10MT)</td>
+                       <td style={{textAlign:"center"}}>19, 25, 26 Feb 2017</td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2017 - 1a Prova - Programma.pdf">Programma</a></td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2017 - 1a Prova - Classifica.pdf">Classifica</a></td>
+                   </tr>
+                   <tr>
+                       <td>Campionato d'Inverno 2016</td>
+                       <td style={{textAlign:"center"}}>29, 30 Ott - 19, 20 Nov 2016</td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Campionato d'Inverno 2016 - Programma.pdf">Programma</a></td>
+                       <td style={{textAlign:"center"}}>-</td>
+                   </tr>
+                   <tr>
+                       <td>4° Trofeo Nazionale Ranking 2016-2017</td>
+                       <td style={{textAlign:"center"}}>15, 16, 22, 23 Ott 2016</td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/4 Trofeo Nazionale Ranking 2016-2017 - Programma.pdf">Programma</a></td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/4 Trofeo Nazionale Ranking 2016-2017 - Classifica.pdf">Classifica</a></td>
+                   </tr>
+                   <tr>
+                       <td>Gara Regionale Federale - 5a Prova (Fuoco e 10MT)</td>
+                       <td style={{textAlign:"center"}}>4, 5 - 11, 12 Giu 2016</td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2016 - 5a Prova - Programma.pdf">Programma</a></td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2016 - 5a Prova - Classifica.pdf">Classifica</a></td>
+                   </tr>
+                   <tr>
+                       <td>Gara Regionale Federale - 4a Prova (Fuoco e 10MT)</td>
+                       <td style={{textAlign:"center"}}>30 Apr - 1, 7, 8 Mag 2016</td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2016 - 4a Prova - Programma.pdf">Programma</a></td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2016 - 4a Prova - Classifica.pdf">Classifica</a></td>
+                   </tr>
+                   <tr>
+                       <td>Gara Regionale Federale - 3a Prova (Fuoco e 10MT)</td>
+                       <td style={{textAlign:"center"}}>19, 20 Mar - 2, 3 Apr 2016</td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2016 - 3a Prova - Programma.pdf">Programma</a></td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2016 - 3a Prova - Classifica.pdf">Classifica</a></td>
+                   </tr>
+                   <tr>
+                       <td>Gara Provinciale 2016</td>
+                       <td style={{textAlign:"center"}}>5, 6 Mar 2016</td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Provinciale 2016 - Programma.pdf">Programma</a></td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Provinciale 2016 - Classifica.pdf">Classifica</a></td>
+                   </tr>
+                   <tr>
+                       <td>Gara Regionale Federale - 2a Prova (solo 10MT)</td>
+                       <td style={{textAlign:"center"}}>21, 27, 28 Feb 2016</td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2016 - 2a Prova - Programma.pdf">Programma</a></td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2016 - 2a Prova - Classifica.pdf">Classifica</a></td>
+                   </tr>
+                   <tr>
+                       <td>Gara Regionale Federale - 1a Prova (solo 10MT)</td>
+                       <td style={{textAlign:"center"}}>24, 30, 31 Gen 2016</td>
+                       <td style={{textAlign:"center"}}>-</td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2016 - 1a Prova - Classifica.pdf">Classifica</a></td>
+                   </tr>
+                   <tr>
+                       <td>Campionato d'Inverno 2015</td>
+                       <td style={{textAlign:"center"}}>24, 25 Ott - 14, 15 Nov 2015</td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Campionato d'Inverno 2015 - Programma.pdf">Programma</a></td>
+                       <td style={{textAlign:"center"}}>-</td>
+                   </tr>
+                   <tr>
+                       <td>4° Trofeo Nazionale Ranking 2015-2016</td>
+                       <td style={{textAlign:"center"}}>10, 11, 17, 18 Ott 2015</td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/4 Trofeo Nazionale Ranking 2015-2016 - Programma.pdf">Programma</a></td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/4 Trofeo Nazionale Ranking 2015-2016 - Classifica.pdf">Classifica</a></td>
+                   </tr>
+                   <tr>
+                       <td>Campionati Italiani 2015 - Juniores Ragazzi Allievi</td>
+                       <td style={{textAlign:"center"}}>10 - 13 Set 2015</td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Campionati Italiani 2015 - Juniores Ragazzi Allievi - Programma.pdf">Programma</a></td>
+                       <td style={{textAlign:"center"}}>-</td>
+                   </tr>
+                   <tr>
+                       <td>Campionati Italiani 2015 - Bologna</td>
+                       <td style={{textAlign:"center"}}>9 - 12 Lug 2015</td>
+                       <td style={{textAlign:"center"}}>-</td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Campionati Italiani 2015 - Bologna - Risultati.pdf">Risultati</a></td>
+                   </tr>
+                   <tr>
+                       <td>Gara Regionale Federale - 5a Prova</td>
+                       <td style={{textAlign:"center"}}>23, 24, 30, 31 Mag 2015</td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2015 - 5a Prova - Programma.pdf">Programma</a></td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2015 - 5a Prova - Classifica.pdf">Classifica</a></td>
+                   </tr>
+                   <tr>
+                       <td>Gara Regionale Federale - 4a Prova</td>
+                       <td style={{textAlign:"center"}}>25, 26 Apr - 2, 3 Mag 2015</td>
+                       <td style={{textAlign:"center"}}>-</td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2015 - 4a Prova - Classifica.pdf">Classifica</a></td>
+                   </tr>
+                   <tr>
+                       <td>Gara Regionale Federale - 3a Prova</td>
+                       <td style={{textAlign:"center"}}>21, 22, 28, 29 Mar 2015</td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2015 - 3a Prova - Programma.pdf">Programma</a></td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2015 - 3a Prova - Classifica.pdf">Classifica</a></td>
+                   </tr>
+                   <tr>
+                       <td>Gara Provinciale 2015</td>
+                       <td style={{textAlign:"center"}}>14, 15 Mar 2015</td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Provinciale 2015 - Programma.pdf">Programma</a></td>
+                       <td style={{textAlign:"center"}}>-</td>
+                   </tr>
+                   <tr>
+                       <td>Gara Regionale Federale - 2a Prova</td>
+                       <td style={{textAlign:"center"}}>22, 28 Feb, 1 Mar 2015</td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2015 - 2a Prova - Programma.pdf">Programma</a></td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2015 - 2a Prova - Classifica.pdf">Classifica</a></td>
+                   </tr>
+                   <tr>
+                       <td>Gara Regionale Federale - 1a Prova</td>
+                       <td style={{textAlign:"center"}}>25, 31 Gen, 1 Feb 2015</td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2015 - 1a Prova - Programma.pdf">Programma</a></td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2015 - 1a Prova - Classifica.pdf">Classifica</a></td>
+                   </tr>
+                   <tr>
+                       <td>Prove Team Cup 2014-2015</td>
+                       <td style={{textAlign:"center"}}>16 Nov, 7 Dic 2014</td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/PROVE '14_15 Team Cup.pdf">Programma</a></td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Calssifica 1^ Gara Team Cup.pdf">Classifica 1a Gara</a></td>
+                   </tr>
+                   <tr>
+                       <td>4° Trofeo Nazionale Ranking 2014-2015</td>
+                       <td style={{textAlign:"center"}}>11, 12, 18, 19 Ott 2014</td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/4 Trofeo Nazionale Ranking 2014-2015 - Programma.pdf">Programma</a></td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/4 Trofeo Nazionale Ranking 2014-2015 - Risultati.pdf">Risultati</a></td>
+                   </tr>
+                   <tr>
+                       <td>Campionati Italiani 2014</td>
+                       <td style={{textAlign:"center"}}>24/27 Lug 2014</td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Campionati Italiani 2014 - Ammissioni.pdf">Ammissioni</a></td>
+                       <td style={{textAlign:"center"}}>-</td>
+                   </tr>
+                   <tr>
+                       <td>Campionato Regionale - 5a Prova</td>
+                       <td style={{textAlign:"center"}}>31 Mag - 1, 7, 8 Giu 2014</td>
+                       <td style={{textAlign:"center"}}>-</td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Campionato Regionale - 5a Prova - Risultati.pdf">Risultati</a></td>
+                   </tr>
+                   <tr>
+                       <td>Gara Regionale Federale - 4a Prova</td>
+                       <td style={{textAlign:"center"}}>26, 27 Apr - 3, 4 Mag 2014</td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2014 - 4a Prova - Programma.pdf">Programma</a></td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2014 - 4a Prova - Risultati.pdf">Risultati</a></td>
+                   </tr>
+                   <tr>
+                       <td>Campionato UITS - 1a Gara</td>
+                       <td style={{textAlign:"center"}}>29, 30 Mag 2014</td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Campionato UITS 2014 - 1a Gara - Programma.pdf">Programma</a></td>
+                       <td style={{textAlign:"center"}}>
+                           <a href="http://www.tsnroma.it/downloads/gare/Campionato UITS 2014 - 1a Gara - Risultati OP.pdf">Risultati Open Production</a> <br /><br />
+                           <a href="http://www.tsnroma.it/downloads/gare/Campionato UITS 2014 - 1a Gara - Risultati P.pdf">Risultati Production</a> <br /><br />
+                           <a href="http://www.tsnroma.it/downloads/gare/Campionato UITS 2014 - 1a Gara - Risultati SP.pdf">Risultati Super Production</a> <br /><br />
+                           <a href="http://www.tsnroma.it/downloads/gare/Campionato UITS 2014 - 1a Gara - Risultati ST.pdf">Risultati Super Trainer</a> <br /><br />
+                           <a href="http://www.tsnroma.it/downloads/gare/Campionato UITS 2014 - 1a Gara - Risultati T.pdf">Risultati Trainer</a> <br />
+                       </td>
+                   </tr>
+                   <tr>
+                       <td>Gara Regionale Federale - 3a Prova</td>
+                       <td style={{textAlign:"center"}}>15,16,22,23 Mar 2014</td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2014 - 3a Prova - Programma.pdf">Programma</a></td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2014 - 3a Prova - Risultati.pdf">Risultati</a></td>
+                   </tr>
+                   <tr>
+                       <td>Gara Provinciale 2014</td>
+                       <td style={{textAlign:"center"}}>8, 9 Mar 2014</td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Provinciale 2014 - Programma.pdf">Programma</a></td>
+                       <td style={{textAlign:"center"}}>-</td>
+                   </tr>
+                   <tr>
+                       <td>Gara Regionale Federale - 2a Prova</td>
+                       <td style={{textAlign:"center"}}>23 Feb, 1, 2 Mar 2014</td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2014 - 2a Prova - Programma.pdf">Programma</a></td>
+                       <td style={{textAlign:"center"}}>-</td>
+                   </tr>
+                   <tr>
+                       <td>Gara Sezionale Ufficiale 2014</td>
+                       <td style={{textAlign:"center"}}>22, 23 Feb 2014</td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Sezionale Ufficiale 2014 - Programma.pdf">Programma</a></td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Sezionale Ufficiale 2014 - Classifica.pdf">Classifica</a></td>
+                   </tr>
+                   <tr>
+                       <td>Torneo Lazio 2014 - 1a Gara</td>
+                       <td style={{textAlign:"center"}}>6-8, 9 Feb 2014</td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Torneo Lazio 2014.pdf">Programma</a><br /><a href="http://www.tsnroma.it/downloads/gare/Torneo Lazio 2014 - 1a Gara - Turni.pdf">Turni</a></td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Torneo Lazio 2014 - 1a Gara - Risultati.pdf">Risultati</a></td>
+                   </tr>
+                   <tr>
+                       <td>Gara Regionale Federale - 1a Prova</td>
+                       <td style={{textAlign:"center"}}>26 Gen, 1, 2 Feb 2014</td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2014 - 1a Prova - Programma.pdf">Programma</a></td>
+                       <td style={{textAlign:"center"}}><a href="http://www.tsnroma.it/downloads/gare/Gara Regionale Federale 2014 - 1a Prova - Risultati.pdf">Risultati</a></td>
+                   </tr>
+               </tbody>
+           </Table>
+                  </div>
                 </Tab.Pane>
                 <Tab.Pane className="TabsPane" eventKey="ludica">
                   <SectionTitle title="ATTIVITÀ LUDICA" />
@@ -389,120 +840,121 @@ const Attività = () => {
                   <h3>Prove balistiche</h3>
                   <p>Certificati del Banco Nazionale Prova Armi. Caricamenti cartucce di vari calibri.</p>
                   <h4>Prove balistiche 2013</h4>
-                  <p>Per la consultazione, fare riferimento a <Link href="https://www.tsnroma.it/downloads/prove-balistiche/Elenco%20Ricariche%202013.pdf" title="Elenco Ricariche 2013">questo documento</Link> riepilogativo.</p>
+                  <p>Per la consultazione, fare riferimento a <Link href="" title="Elenco Ricariche 2013">questo documento</Link> riepilogativo.</p>
                   <ul style={{listStyle: "disc"}}>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%2032%20S%26W%20LONG%20WC%20lotto1.pdf">cal. 32 S&amp;W LONG WC Lotto 1</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%2032%20S%26W%20LONG%20WC%20lotto2.pdf">cal. 32 S&amp;W LONG WC Lotto 2</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%2032%20S%26W%20LONG%20WC%20lotto3.pdf">cal. 32 S&amp;W LONG WC Lotto 3</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%2032%20S%26W%20LONG%20WC%20lotto4.pdf">cal. 32 S&amp;W LONG WC Lotto 4</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%2032%20S%26W%20LONG%20WC%20lotto5.pdf">cal. 32 S&amp;W LONG WC Lotto 5</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%2032%20S%26W%20LONG%20WC%20lotto6.pdf">cal. 32 S&amp;W LONG WC Lotto 6</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%2032%20S%26W%20LONG%20WC%20lotto7.pdf">cal. 32 S&amp;W LONG WC Lotto 7</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%2032%20S%26W%20LONG%20WC%20lotto8.pdf">cal. 32 S&amp;W LONG WC Lotto 8</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%209x21%20lotto9.pdf">cal. 9x21 Lotto 9</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%209x21%20lotto10.pdf">cal. 9x21 Lotto 10</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%209x21%20lotto11.pdf">cal. 9x21 Lotto 11</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%209x21%20lotto12.pdf">cal. 9x21 Lotto 12</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%209x21%20lotto13.pdf">cal. 9x21 Lotto 13</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%209x21%20lotto14.pdf">cal. 9x21 Lotto 14</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%209x21%20lotto15.pdf">cal. 9x21 Lotto 15</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%209x21%20lotto16.pdf">cal. 9x21 Lotto 16</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%209x21%20lotto17.pdf">cal. 9x21 Lotto 17</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%209x21%20lotto18.pdf">cal. 9x21 Lotto 18</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%209x21%20lotto19.pdf">cal. 9x21 Lotto 19</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%209x21%20lotto20.pdf">cal. 9x21 Lotto 20</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%209x21%20lotto21.pdf">cal. 9x21 Lotto 21</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%209x21%20lotto22.pdf">cal. 9x21 Lotto 22</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%209x21%20lotto23.pdf">cal. 9x21 Lotto 23</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%209x21%20lotto24.pdf">cal. 9x21 Lotto 24</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%209x21%20lotto25.pdf">cal. 9x21 Lotto 25</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%209x21%20lotto26.pdf">cal. 9x21 Lotto 26</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%209x21%20lotto27.pdf">cal. 9x21 Lotto 27</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%209x21%20lotto28.pdf">cal. 9x21 Lotto 28</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%209x21%20lotto29.pdf">cal. 9x21 Lotto 29</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%209x21%20lotto30.pdf">cal. 9x21 Lotto 30</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%209x21%20lotto31.pdf">cal. 9x21 Lotto 31</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%209x21%20lotto32.pdf">cal. 9x21 Lotto 32</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%209x21%20lotto33.pdf">cal. 9x21 Lotto 33</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%209x21%20lotto34.pdf">cal. 9x21 Lotto 34</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%209x21%20lotto35.pdf">cal. 9x21 Lotto 35</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%209x21%20lotto36.pdf">cal. 9x21 Lotto 36</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%2040%20S%26W%20lotto37.pdf">cal. 40 S&amp;W Lotto 37</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%2038%20SPECIAL%20lotto38.pdf">cal. 38 SPECIAL Lotto 38</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%2045%20AUTO%20lotto39.pdf">cal. 45 AUTO Lotto 39</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%2045%20AUTO%20lotto40.pdf">cal. 45 AUTO Lotto 40</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%2045%20AUTO%20lotto41.pdf">cal. 45 AUTO Lotto 41</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%2045%20AUTO%20lotto42.pdf">cal. 45 AUTO Lotto 42</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%20357%20MAGNUM%20lotto43.pdf">cal. 357 MAGNUM Lotto 43</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%20357%20MAGNUM%20lotto44.pdf">cal. 357 MAGNUM Lotto 44</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%20357%20MAGNUM%20lotto45.pdf">cal. 357 MAGNUM Lotto 45</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%20357%20MAGNUM%20lotto46.pdf">cal. 357 MAGNUM Lotto 46</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%2038%20SPECIAL%20WC%20lotto47.pdf">cal. 38 SPECIAL WC Lotto 47</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/2013/cal.%2044%20S%26W%20SPECIAL%20lotto48.pdf">cal. 44 S&amp;W SPECIAL Lotto 48</a></li>
+				<li><a href="">cal. 32 S&amp;W LONG WC Lotto 1</a></li>
+				<li><a href="">cal. 32 S&amp;W LONG WC Lotto 2</a></li>
+				<li><a href="">cal. 32 S&amp;W LONG WC Lotto 3</a></li>
+				<li><a href="">cal. 32 S&amp;W LONG WC Lotto 4</a></li>
+				<li><a href="">cal. 32 S&amp;W LONG WC Lotto 5</a></li>
+				<li><a href="">cal. 32 S&amp;W LONG WC Lotto 6</a></li>
+				<li><a href="">cal. 32 S&amp;W LONG WC Lotto 7</a></li>
+				<li><a href="">cal. 32 S&amp;W LONG WC Lotto 8</a></li>
+				<li><a href="">cal. 9x21 Lotto 9</a></li>
+				<li><a >cal. 9x21 Lotto 9</a></li>
+				<li><a >cal. 9x21 Lotto 10</a></li>
+				<li><a >cal. 9x21 Lotto 11</a></li>
+				<li><a >cal. 9x21 Lotto 12</a></li>
+				<li><a >cal. 9x21 Lotto 13</a></li>
+				<li><a >cal. 9x21 Lotto 14</a></li>
+				<li><a >cal. 9x21 Lotto 15</a></li>
+				<li><a >cal. 9x21 Lotto 16</a></li>
+				<li><a >cal. 9x21 Lotto 17</a></li>
+				<li><a >cal. 9x21 Lotto 18</a></li>
+				<li><a >cal. 9x21 Lotto 19</a></li>
+				<li><a >cal. 9x21 Lotto 20</a></li>
+				<li><a >cal. 9x21 Lotto 21</a></li>
+				<li><a >cal. 9x21 Lotto 22</a></li>
+				<li><a >cal. 9x21 Lotto 23</a></li>
+				<li><a >cal. 9x21 Lotto 24</a></li>
+				<li><a >cal. 9x21 Lotto 25</a></li>
+				<li><a >cal. 9x21 Lotto 26</a></li>
+				<li><a >cal. 9x21 Lotto 27</a></li>
+				<li><a >cal. 9x21 Lotto 28</a></li>
+				<li><a >cal. 9x21 Lotto 29</a></li>
+				<li><a >cal. 9x21 Lotto 30</a></li>
+				<li><a >cal. 9x21 Lotto 31</a></li>
+				<li><a >cal. 9x21 Lotto 32</a></li>
+				<li><a >cal. 9x21 Lotto 33</a></li>
+				<li><a >cal. 9x21 Lotto 34</a></li>
+				<li><a >cal. 9x21 Lotto 35</a></li>
+				<li><a >cal. 9x21 Lotto 36</a></li>
+				<li><a href="">cal. 40 S&amp;W Lotto 37</a></li>
+				<li><a href="">cal. 38 SPECIAL Lotto 38</a></li>
+				<li><a href="">cal. 45 AUTO Lotto 39</a></li>
+				<li><a href="">cal. 45 AUTO Lotto 40</a></li>
+				<li><a href="">cal. 45 AUTO Lotto 41</a></li>
+				<li><a href="">cal. 45 AUTO Lotto 42</a></li>
+				<li><a href="">cal. 357 MAGNUM Lotto 43</a></li>
+				<li><a href="">cal. 357 MAGNUM Lotto 44</a></li>
+				<li><a href="">cal. 357 MAGNUM Lotto 45</a></li>
+				<li><a href="">cal. 357 MAGNUM Lotto 46</a></li>
+				<li><a href="">cal. 38 SPECIAL WC Lotto 47</a></li>
+				<li><a href="">cal. 44 S&amp;W SPECIAL Lotto 48</a></li>
                 <h4>Prove balistiche 1999/2000</h4>
                 <ul style={{listStyle: "disc"}}>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%209x21%20cert.%20n.%2017720.pdf">cal. 9x21 cert. n. 17720</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%209x21%20cert.%20n.%2017723.pdf">cal. 9x21 cert. n. 17723</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%209x21%20cert.%20n.%2017722.pdf">cal. 9x21 cert. n. 17722</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%209x21%20cert.%20n.%2017724.pdf">cal. 9x21 cert. n. 17724</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%209x21%20cert.%20n.%2017725.pdf">cal. 9x21 cert. n. 17725</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%209x21%20cert.%20n.%2017726.pdf">cal. 9x21 cert. n. 17726</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%209x21%20cert.%20n.%2017727.pdf">cal. 9x21 cert. n. 17727</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%209x21%20cert.%20n.%2017728.pdf">cal. 9x21 cert. n. 17728</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%209x21%20cert.%20n.%2017729.pdf">cal. 9x21 cert. n. 17729</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%209x21%20cert.%20n.%2017730.pdf">cal. 9x21 cert. n. 17730</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%209x21%20cert.%20n.%2017731.pdf">cal. 9x21 cert. n. 17731</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%209x21%20cert.%20n.%2017732.pdf">cal. 9x21 cert. n. 17732</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%209x21%20cert.%20n.%2017733.pdf">cal. 9x21 cert. n. 17733</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%209x21%20cert.%20n.%2017734.pdf">cal. 9x21 cert. n. 17734</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%209x21%20cert.%20n.%2017772.pdf">cal. 9x21 cert. n. 17772</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%2038%20SPECIAL%20cert.%20n.%2017935.pdf">cal. 38 SPECIAL cert. n. 17935</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%209x21%20cert.%20n.%2017748.pdf">cal. 9x21 cert. n. 17748</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%2038%20SPECIAL%20cert.%20n.%2017936.pdf">cal. 38 SPECIAL cert. n. 17936</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%2038%20SPECIAL%20cert.%20n.%2017937.pdf">cal. 38 SPECIAL cert. n. 17937</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%2038%20SPECIAL%20cert.%20n.%2017938.pdf">cal. 38 SPECIAL cert. n. 17938</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%2038%20SPECIAL%20cert.%20n.%2017939.pdf">cal. 38 SPECIAL cert. n. 17939</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%2038%20SPECIAL%20cert.%20n.%2017940.pdf">cal. 38 SPECIAL cert. n. 17940</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%2038%20SPECIAL%20cert.%20n.%2017941.pdf">cal. 38 SPECIAL cert. n. 17941</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%2038%20SPECIAL%20cert.%20n.%2017942.pdf">cal. 38 SPECIAL cert. n. 17942</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%2038%20SPECIAL%20cert.%20n.%2017944.pdf">cal. 38 SPECIAL cert. n. 17944</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%2038%20SPECIAL%20cert.%20n.%2017943.pdf">cal. 38 SPECIAL cert. n. 17943</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%2038%20SPECIAL%20cert.%20n.%2017945.pdf">cal. 38 SPECIAL cert. n. 17945</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%2040%20S%26W%20cert.%20n.%2017759.pdf">cal. 40 S&amp;W cert. n. 17759</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%2038%20SPECIAL%20cert.%20n.%2017946.pdf">cal. 38 SPECIAL cert. n. 17946</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%2040%20S%26W%20cert.%20n.%2017760.pdf">cal. 40 S&amp;W cert. n. 17760</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%2040%20S%26W%20cert.%20n.%2017761.pdf">cal. 40 S&amp;W cert. n. 17761</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%2040%20S%26W%20cert.%20n.%2017762.pdf">cal. 40 S&amp;W cert. n. 17762</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%2040%20S%26W%20cert.%20n.%2017764.pdf">cal. 40 S&amp;W cert. n. 17764</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%2040%20S%26W%20cert.%20n.%2017765.pdf">cal. 40 S&amp;W cert. n. 17765</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%2040%20S%26W%20cert.%20n.%2017763.pdf">cal. 40 S&amp;W cert. n. 17763</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%2040%20S%26W%20cert.%20n.%2017766.pdf">cal. 40 S&amp;W cert. n. 17766</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%2040%20S%26W%20cert.%20n.%2017767.pdf">cal. 40 S&amp;W cert. n. 17767</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%2040%20S%26W%20cert.%20n.%2017768.pdf">cal. 40 S&amp;W cert. n. 17768</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%2040%20S%26W%20cert.%20n.%2017769.pdf">cal. 40 S&amp;W cert. n. 17769</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%2040%20S%26W%20cert.%20n.%2017770.pdf">cal. 40 S&amp;W cert. n. 17770</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%2040%20S%26W%20cert.%20n.%2017771.pdf">cal. 40 S&amp;W cert. n. 17771</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%2045%20ACP%20cert.%20n.%2017749.pdf">cal. 45 ACP cert. n. 17749</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%2045%20ACP%20cert.%20n.%2017750.pdf">cal. 45 ACP cert. n. 17750</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%2045%20ACP%20cert.%20n.%2017751.pdf">cal. 45 ACP cert. n. 17751</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%2045%20ACP%20cert.%20n.%2017752.pdf">cal. 45 ACP cert. n. 17752</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%2045%20ACP%20cert.%20n.%2017753.pdf">cal. 45 ACP cert. n. 17753</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%2045%20ACP%20cert.%20n.%2017754.pdf">cal. 45 ACP cert. n. 17754</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%2045%20ACP%20cert.%20n.%2017755.pdf">cal. 45 ACP cert. n. 17755</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%2045%20ACP%20cert.%20n.%2017757.pdf">cal. 45 ACP cert. n. 17757</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%2045%20ACP%20cert.%20n.%2017758.pdf">cal. 45 ACP cert. n. 17758</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%20357%20MAGNUM%20cert.%20n.%2017934.pdf">cal. 357 MAGNUM cert. n. 17934</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%20357%20MAGNUM%20cert.%20n.%2017947.pdf">cal. 357 MAGNUM cert. n. 17947</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%20357%20MAGNUM%20cert.%20n.%2017948.pdf">cal. 357 MAGNUM cert. n. 17948</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%20357%20MAGNUM%20cert.%20n.%2017949.pdf">cal. 357 MAGNUM cert. n. 17949</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%20357%20MAGNUM%20cert.%20n.%2017950.pdf">cal. 357 MAGNUM cert. n. 17950</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%20357%20MAGNUM%20cert.%20n.%2017951.pdf">cal. 357 MAGNUM cert. n. 17951</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%20357%20MAGNUM%20cert.%20n.%2017952.pdf">cal. 357 MAGNUM cert. n. 17952</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%20357%20MAGNUM%20cert.%20n.%2017953.pdf">cal. 357 MAGNUM cert. n. 17953</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%20357%20MAGNUM%20cert.%20n.%2017954.pdf">cal. 357 MAGNUM cert. n. 17954</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%20357%20MAGNUM%20cert.%20n.%2017955.pdf">cal. 357 MAGNUM cert. n. 17955</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%20357%20MAGNUM%20cert.%20n.%2017956.pdf">cal. 357 MAGNUM cert. n. 17956</a></li>
-				<li><a href="https://www.tsnroma.it/downloads/prove-balistiche/1999-2000/cal.%20357%20MAGNUM%20cert.%20n.%2018742%20del%202000.pdf">cal. 357 MAGNUM cert. n. 18742 del 2000</a></li>
+				<li><a href="">cal. 9x21 cert. n. 17720</a></li>
+				<li><a href="">cal. 9x21 cert. n. 17723</a></li>
+				<li><a href="">cal. 9x21 cert. n. 17722</a></li>
+				<li><a href="">cal. 9x21 cert. n. 17724</a></li>
+				<li><a href="">cal. 9x21 cert. n. 17725</a></li>
+				<li><a href="">cal. 9x21 cert. n. 17726</a></li>
+				<li><a href="">cal. 9x21 cert. n. 17727</a></li>
+				<li><a href="">cal. 9x21 cert. n. 17728</a></li>
+				<li><a href="">cal. 9x21 cert. n. 17729</a></li>
+				<li><a href="">cal. 9x21 cert. n. 17730</a></li>
+				<li><a href="">cal. 9x21 cert. n. 17731</a></li>
+				<li><a href="">cal. 9x21 cert. n. 17732</a></li>
+				<li><a href="">cal. 9x21 cert. n. 17733</a></li>
+				<li><a href="">cal. 9x21 cert. n. 17734</a></li>
+				<li><a href="">cal. 9x21 cert. n. 17772</a></li>
+				<li><a href="">cal. 38 SPECIAL cert. n. 17935</a></li>
+				<li><a href="">cal. 9x21 cert. n. 17748</a></li>
+				<li><a href="">cal. 38 SPECIAL cert. n. 17936</a></li>
+				<li><a href="">cal. 38 SPECIAL cert. n. 17937</a></li>
+				<li><a href="">cal. 38 SPECIAL cert. n. 17938</a></li>
+				<li><a href="">cal. 38 SPECIAL cert. n. 17939</a></li>
+				<li><a href="">cal. 38 SPECIAL cert. n. 17940</a></li>
+				<li><a href="">cal. 38 SPECIAL cert. n. 17941</a></li>
+				<li><a href="">cal. 38 SPECIAL cert. n. 17942</a></li>
+				<li><a href="">cal. 38 SPECIAL cert. n. 17944</a></li>
+				<li><a href="">cal. 38 SPECIAL cert. n. 17943</a></li>
+				<li><a href="">cal. 38 SPECIAL cert. n. 17945</a></li>
+				<li><a href="">cal. 40 S&amp;W cert. n. 17759</a></li>
+				<li><a href="">cal. 38 SPECIAL cert. n. 17946</a></li>
+				<li><a href="">cal. 40 S&amp;W cert. n. 17760</a></li>
+				<li><a href="">cal. 40 S&amp;W cert. n. 17761</a></li>
+				<li><a href="">cal. 40 S&amp;W cert. n. 17762</a></li>
+				<li><a href="">cal. 40 S&amp;W cert. n. 17764</a></li>
+				<li><a href="">cal. 40 S&amp;W cert. n. 17765</a></li>
+				<li><a href="">cal. 40 S&amp;W cert. n. 17763</a></li>
+				<li><a href="">cal. 40 S&amp;W cert. n. 17766</a></li>
+				<li><a href="">cal. 40 S&amp;W cert. n. 17767</a></li>
+				<li><a href="">cal. 40 S&amp;W cert. n. 17768</a></li>
+				<li><a href="">cal. 40 S&amp;W cert. n. 17769</a></li>
+				<li><a href="">cal. 40 S&amp;W cert. n. 17770</a></li>
+				<li><a href="">cal. 40 S&amp;W cert. n. 17771</a></li>
+				<li><a href="">cal. 45 ACP cert. n. 17749</a></li>
+				<li><a href="">cal. 45 ACP cert. n. 17750</a></li>
+				<li><a href="">cal. 45 ACP cert. n. 17751</a></li>
+				<li><a href="">cal. 45 ACP cert. n. 17752</a></li>
+				<li><a href="">cal. 45 ACP cert. n. 17753</a></li>
+				<li><a href="">cal. 45 ACP cert. n. 17754</a></li>
+				<li><a href="">cal. 45 ACP cert. n. 17755</a></li>
+				<li><a href="">cal. 45 ACP cert. n. 17757</a></li>
+				<li><a href="">cal. 45 ACP cert. n. 17758</a></li>
+				<li><a href="">cal. 357 MAGNUM cert. n. 17934</a></li>
+				<li><a href="">cal. 357 MAGNUM cert. n. 17947</a></li>
+				<li><a href="">cal. 357 MAGNUM cert. n. 17948</a></li>
+				<li><a href="">cal. 357 MAGNUM cert. n. 17949</a></li>
+				<li><a href="">cal. 357 MAGNUM cert. n. 17950</a></li>
+				<li><a href="">cal. 357 MAGNUM cert. n. 17951</a></li>
+				<li><a href="">cal. 357 MAGNUM cert. n. 17952</a></li>
+				<li><a href="">cal. 357 MAGNUM cert. n. 17953</a></li>
+				<li><a href="">cal. 357 MAGNUM cert. n. 17954</a></li>
+				<li><a href="">cal. 357 MAGNUM cert. n. 17955</a></li>
+				<li><a href="">cal. 357 MAGNUM cert. n. 17956</a></li>
+				<li><a href="">cal. 357 MAGNUM cert. n. 18742 del 2000</a></li>
 			</ul>
 			</ul>
                   </div>

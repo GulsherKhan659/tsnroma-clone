@@ -309,7 +309,7 @@ const Home = () => {
         <Row className="custom-row">
           <Col lg={4} className="custom-col">
               <SectionTitle title="CERTIFICATORIA" id="activityCard" />
-              <Link to="https://www.tsnroma.it/attivita/certificatoria">
+              <Link to="/attivita/certificatoria">
                 <Image src={ActivityImage1} width="100%" />
               </Link>
           </Col>

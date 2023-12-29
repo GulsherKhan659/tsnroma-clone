@@ -37,3 +37,9 @@
     font-weight: 700;
     font-family: Montserrat-Medium,sans-serif;
 }
+.activityHidden{
+    display: none;
+}
+.activity{
+    display: block;
+}

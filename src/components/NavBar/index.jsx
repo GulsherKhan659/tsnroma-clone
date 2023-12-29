@@ -27,7 +27,7 @@ function TnsromaNavbar() {
                   to={item.path}
                   key={index}
                   className="nav-link"
-                  activeClassName="active"
+                  activeclassname="active"
                 >
                   <div className="list-item">{item.name}</div>
                 </NavLink>
