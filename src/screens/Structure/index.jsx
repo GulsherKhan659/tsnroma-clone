@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Col, Container, Image, Nav, Row, Tab } from "react-bootstrap";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Col, Container, Nav, Row, Tab } from "react-bootstrap";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import Banner from "../../components/Banner";
 import bannerImage from "../../assets/images/hero-tsnroma.jpg";
 import TnsromaFooter from "../../components/Footer";
@@ -13,11 +13,19 @@ const Struttura = () => {
   const history = useNavigate();
 
   useEffect(() => {
-    const isChiSiamoPage = location.pathname === '/struttura';
-    setActiveTab(isChiSiamoPage ? null : activeTab)
+    let isChiSiamoPage = location.pathname;
+    if (!isChiSiamoPage.split('/')[2]) {
+      setActiveTab(null)
+    }else{
+      setActiveTab(isChiSiamoPage.split('/')[2]);
+    }
   }, [location.pathname]);
-  const iframeSrc =
-    "https://maps.google.com/maps?q=Viale+di+Tor+di+Quinto%2C+63+-+00191+Roma&t=&z=13&ie=UTF8&iwloc=&output=embed";
+  
+  const handleTabSelect = (key) => {
+    setActiveTab(key);
+    history(`${key.toLowerCase()}`);
+  };
+
   return (
     <Container>
       <section style={{ backgroundColor: "#fff", padding: "0 20px" }}>
@@ -25,10 +33,7 @@ const Struttura = () => {
         <Tab.Container 
           id="left-tabs-example"
           activeKey={activeTab}
-          onSelect={(key) => {
-            setActiveTab(key);
-            history(`${key.toLowerCase()}`);
-          }}>
+          onSelect={handleTabSelect}>
           <Row>
             <Col sm={3}>
               <Nav variant="pills" className="flex-column">
@@ -81,7 +86,9 @@ const Struttura = () => {
                 </div>
               </div>
               <Tab.Content>
-                <Tab.Pane className="TabsPane" eventKey="dove-siamo">
+                <Outlet />
+                {/* <Tab.Pane className="TabsPane" eventKey="dove-siamo">
+                  <SectionTitle title={"DOVE SIAMO"} />
                   <TnsromaFooter />
                   <div className="mapouter">
                     <div
@@ -234,7 +241,7 @@ const Struttura = () => {
                       </Col>
                     </Row>
                   </div>
-                </Tab.Pane>
+                </Tab.Pane> */}
               </Tab.Content>
             </Col>
           </Row>

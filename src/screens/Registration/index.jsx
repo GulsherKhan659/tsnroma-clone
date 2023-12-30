@@ -10,19 +10,24 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 
 const Iscrizione = () => {
-  const [activeTab, setActiveTab] = useState(undefined);
+  const [activeTab, setActiveTab] = useState(null);
   const location = useLocation();
   const history = useNavigate();
 
   useEffect(() => {
     let isChiSiamoPage = location.pathname;
-    setActiveTab(isChiSiamoPage.split('/')[2]);
+    if (!isChiSiamoPage.split('/')[2]) {
+      setActiveTab(null)
+    }else{
+      setActiveTab(isChiSiamoPage.split('/')[2]);
+    }
   }, [location.pathname]);
   
   const handleTabSelect = (key) => {
     setActiveTab(key);
     history(`${key.toLowerCase()}`);
   };
+
 
   return (
     <Container>
@@ -70,7 +75,7 @@ const Iscrizione = () => {
                   </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link className="TabsOption" eventKey="FAQ">
+                  <Nav.Link className="TabsOption" eventKey="faq">
                     FAQ
                   </Nav.Link>
                 </Nav.Item>
@@ -78,7 +83,7 @@ const Iscrizione = () => {
             </Col>
             <Col sm={9}>
               <div
-                className={activeTab === undefined ? "activity" : "activityHidden"}
+                className={activeTab === null ? "activity" : "activityHidden"}
               >
                 <SectionTitle title="ISCRIZIONE" />
                 <div className="chiTabsData">

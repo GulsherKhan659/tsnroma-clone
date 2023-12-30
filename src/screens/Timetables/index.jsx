@@ -17,7 +17,7 @@ const Orari = () => {
               <Nav variant="pills" className="flex-column">
                 <Nav.Item>
                   {/* <Nav.Link className="TabsOption" eventKey="dove-siamo"> */}
-                    <Link className="TabsOption" to={"/struttura"}>Dove-Siamo</Link>
+                    <Link className="TabsOption" to={"/struttura/dove-siamo"}>Dove-Siamo</Link>
                   {/* </Nav.Link> */}
                 </Nav.Item>
                 <Nav.Item>
@@ -26,13 +26,13 @@ const Orari = () => {
                   </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                    <Link className="TabsOption" to="/struttura">Impianti</Link>
+                    <Link className="TabsOption" to="/struttura/impianti">Impianti</Link>
                 </Nav.Item>
                 <Nav.Item>
-				<Link className="TabsOption" to="/struttura">Uffici</Link>
+				<Link className="TabsOption" to="/struttura/uffici">Uffici</Link>
                 </Nav.Item>
                 <Nav.Item>
-				<Link className="TabsOption" to="/struttura">Pacchetti-2024</Link>
+				<Link className="TabsOption" to="/struttura/bar-ristorante">Pacchetti-2024</Link>
                 </Nav.Item>
               </Nav>
             </Col>

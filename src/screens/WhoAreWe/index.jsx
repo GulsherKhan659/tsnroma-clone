@@ -9,13 +9,17 @@ import TnsromaFooter from "../../components/Footer";
 
 
 const ChiSiamo = () => {
-  const [activeTab, setActiveTab] = useState(undefined);
+  const [activeTab, setActiveTab] = useState(null);
   const location = useLocation();
   const history = useNavigate();
 
   useEffect(() => {
     let isChiSiamoPage = location.pathname;
-    setActiveTab(isChiSiamoPage.split('/')[2]);
+    if (!isChiSiamoPage.split('/')[2]) {
+      setActiveTab(null)
+    }else{
+      setActiveTab(isChiSiamoPage.split('/')[2]);
+    }
   }, [location.pathname]);
   
   const handleTabSelect = (key) => {
@@ -62,7 +66,7 @@ const ChiSiamo = () => {
               </Nav>
             </Col>
             <Col sm={9}>
-              <div className={activeTab === undefined ? "activity" : "activityHidden"}>
+              <div className={activeTab === null ? "activity" : "activityHidden"}>
               <SectionTitle title="CHI SIAMO" />
                 <div className="chiTabsData">
                 <p>

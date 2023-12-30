@@ -108,7 +108,7 @@ const Faq = () => {
           provvederemo a risponderti al più presto.
         </p>
         <div id="faq-container">
-          <div class="faq">
+          <div className="faq">
             {faqData.map((item, index) => (
               <div key={index}>
                 <h4
