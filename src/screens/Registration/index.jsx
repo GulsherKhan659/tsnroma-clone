@@ -5,113 +5,24 @@ import bannerImage from "../../assets/images/hero-tsnroma.jpg";
 import "./index.css";
 import TnsromaFooter from "../../components/Footer";
 import SectionTitle from "../../components/TrSectionsTitle";
-import { Link } from "react-router-dom";
-import TnsTable from "../../components/TnsTable";
+import { Outlet } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const faqData = [
-  {
-    question:
-      "Is the range open only to military personnel or is it open to the public?",
-    answer: "Il poligono non è una caserma e tutti possono accedervi.",
-  },
-  {
-    question: "I don't have any weapons, how do I practice?",
-    answer:
-      "Il poligono mette a disposizione dei soci le armi necessarie agli allenamenti.",
-  },
-  {
-    question: "Can I buy cartridges at the range?",
-    answer:
-      "Il poligono può cedere le cartucce necessarie all'allenamento. Le cartucce devono essere utilizzate esclusivamente nel poligono.",
-  },
-  {
-    question: "I haven't done military service, can I sign up?",
-    answer:
-      "Chiunque, in regola con i requisiti di legge, può iscriversi, anche gli obiettori di coscienza purché siano trascorsi cinque anni dalla data di congedo e dopo aver presentato l'apposita dichiarazione irrevocabile presso l'ufficio Nazionale per il Servizio Civile. Clicca qua per scaricare il modulo.",
-  },
-  {
-    question: "What weapons can I use on the range?",
-    answer:
-      "Quelle che unitamente al munizionamento utilizzato sviluppano energia cinetica entro 63 Kgm.",
-  },
-  {
-    question: "I would like to start shooting, do you have any instructors?",
-    answer:
-      "La Sezione mette a disposizione degli allenatori qualificati per le varie specialità di tiro accademico ed effettua corsi di tiro con frequenza bisettimanale.",
-  },
-  {
-    question: "Can minors practice target shooting?",
-    answer:
-      "Il tiro a segno con armi ad aria compressa può essere praticato dal 10° anno di età. Le armi a fuoco possono essere utilizzate solamente dal 18° anno di età ad eccezione dei tiratori agonisti categoria 'juniores', esclusivamente per le armi previste per le gare avendo il tiratore compiuto il 14° anno di età",
-  },
-  {
-    question: "I am not an Italian citizen, can I register for the range?",
-    answer:
-      "Il richiedente deve essere in possesso della cittadinanza in un Paese dell'Unione Europea con domicilio in Italia oppure, per i cittadini non appartenenti all'Unione Europea, la residenza in Italia. In tal caso sarà necessario allegare copia della carta o permesso di soggiorno in corso di validità.",
-  },
-  {
-    question:
-      "I read that a medical certificate is required for registration. Who can issue it and what must they certify?",
-    answer:
-      "Il certificato medico deve essere rilasciato dal medico di base convenzionato con le ASL. Il certificato dovrà riportare la frase indicata nel modulo iscrizione che si trova nella pagina dedicata del nostro sito. Non si accettano certificati anamnestici.",
-  },
-  {
-    question: "Can I shoot at the range with my own guns and cartridges?",
-    answer:
-      "Certamente, sempre che le cartucce rientrino nei limiti di energia cinetica consentiti e le armi siano in condizioni di efficienza.",
-  },
-  {
-    question:
-      "Does the membership card issued by the Section entitle me to carry a firearm?",
-    answer:
-      "Assolutamente no! Per il porto o trasporto delle armi occorrono apposite licenze di polizia da richiedere alle Autorità competenti.",
-  },
-  {
-    question: "Can I buy weapons and cartridges at TSN?",
-    answer:
-      "La Sezione effettua solamente cessione cartucce o noleggio armi ai soci iscritti. Le cartucce cedute dalla Sezione devono essere obbligatoriamente consumate all'interno delle Sezioni di tiro. Le cartucce ricevute dalla Sezione devono essere riconsegnate se per qualsiasi motivo non potessero essere consumate in giornata.",
-  },
-  {
-    question:
-      "I am a member of another organization and/or hold a firearms licence, can I shoot without taking tests or exams?",
-    answer:
-      "La nostra Sezione si attiene a regolamenti interni che devono essere appresi da chiunque intenda frequentare il poligono di tiro. L'abilitazione è quindi richiesta a tutti.",
-  },
-  {
-    question: "Is it possible to use a 12 gauge shotgun?",
-    answer:
-      "L'utilizzo del fucile calibro 12 è consentito in configurazione 'pompa' ed esclusivamente con il munizionamento a carica ridotta ceduto dalla Sezione.",
-  },
-  {
-    question:
-      "I am registered in another TSN Section, can I practice at the Rome Section without having to re-register?",
-    answer:
-      "L'iscrizione in corso presso una Sezione, come agonista, consente previo consenso della Sezione ospitante, lo svolgimento dell'attività di tiro, senza dover effettuare un'ulteriore iscrizione. Per gli iscritti a Sezioni nella provincia di Roma l'ospitalità è limitata agli impianti non presenti nella Sezione di provenienza, sempre previo preventivo consenso.",
-  },
-  {
-    question: "Can I shoot without having any type of gun licence?",
-    answer:
-      "Non occorre nessun tipo di porto d'armi in quanto i soci possono utilizzare armi e cartucce della Sezione.",
-  },
-];
 
 const Iscrizione = () => {
-  const [activeTab, setActiveTab] = useState(null);
-  const[visibleAnswers, setVisibleAnsers] = useState(Array(faqData.length).fill(false));
+  const [activeTab, setActiveTab] = useState(undefined);
   const location = useLocation();
   const history = useNavigate();
 
   useEffect(() => {
-    const isChiSiamoPage = location.pathname === '/iscrizione';
-    setActiveTab(isChiSiamoPage ? null : activeTab)
+    let isChiSiamoPage = location.pathname;
+    setActiveTab(isChiSiamoPage.split('/')[2]);
   }, [location.pathname]);
-
-  const toggleAnswer = (index) => {
-    const newVisibleAnswers = [...visibleAnswers];
-    newVisibleAnswers[index] = !newVisibleAnswers[index];
-    setVisibleAnsers(newVisibleAnswers); 
-  }
+  
+  const handleTabSelect = (key) => {
+    setActiveTab(key);
+    history(`${key.toLowerCase()}`);
+  };
 
   return (
     <Container>
@@ -120,10 +31,7 @@ const Iscrizione = () => {
         <Tab.Container
           id="left-tabs-example"
           activeKey={activeTab}
-        onSelect={(key) => {
-          setActiveTab(key);
-          history(`${key.toLowerCase()}`);
-        }}
+          onSelect={handleTabSelect}
         >
           <Row className="custom-row">
             <Col sm={3}>
@@ -170,7 +78,7 @@ const Iscrizione = () => {
             </Col>
             <Col sm={9}>
               <div
-                className={activeTab === null ? "activity" : "activityHidden"}
+                className={activeTab === undefined ? "activity" : "activityHidden"}
               >
                 <SectionTitle title="ISCRIZIONE" />
                 <div className="chiTabsData">
@@ -442,168 +350,8 @@ const Iscrizione = () => {
                 </div>
               </div>
               <Tab.Content>
-                <Tab.Pane className="TabsPane" eventKey="obbligatoria">
-                  <SectionTitle title="OBBLIGATORIA" />
-                  <div className="chiTabsData">
-                    <p>
-                      Tutti coloro che svolgono servizio armato presso enti
-                      pubblici o privati devono iscriversi ad una Sezione del
-                      Tiro a Segno Nazionale e svolgere annualmente un corso di
-                      lezioni regolamentari di tiro a segno. Questa norma
-                      chiaramente comprende le Guardie particolari giurate, gli
-                      appartenenti alle Polizie locali, etc. <br />
-                      L’obbligo dell’iscrizione e del relativo corso di tiro per
-                      il rilascio del certificato di idoneità al maneggio delle
-                      armi è esteso a tutti coloro che non avendo svolto il
-                      servizio militare o avendolo svolto da più di dieci anni
-                      richiedono una licenza di porto d’armi, o comunque un
-                      titolo di polizia valido per l’acquisto di armi.
-                    </p>
-                  </div>
-                </Tab.Pane>
-                <Tab.Pane className="TabsPane" eventKey="volontaria">
-                  <SectionTitle title="VOLONTARIA" />
-                  <div className="chiTabsData">
-                    <p>
-                      Per svolgere attività di tiro a segno ludica e/o sportiva
-                      occorre iscriversi al Tiro a Segno Nazionale. L’iscrizione
-                      è volontaria e l’importo è annualmente stabilito
-                      dall’Unione Italiana Tiro a Segno. Al momento
-                      dell’iscrizione oltre al pagamento della quota annuale
-                      (Nota bene: 1 gennaio - 31 dicembre) ed alla presentazione
-                      della documentazione richiesta, occorre svolgere in sede
-                      un corso di tiro sia teorico che pratico dove si
-                      apprenderanno le corrette norme di sicurezza e tecniche di
-                      base per effettuare l’attività di tiro presso i nostri
-                      poligoni. Superato il corso si potrà autonomamente
-                      svolgere attività di tiro con le modalità previste dal
-                      Regolamento e sotto la vigilanza degli istruttori di tiro.
-                    </p>
-                  </div>
-                </Tab.Pane>
-                <Tab.Pane className="TabsPane" eventKey="documenti-necessari">
-                  <SectionTitle title="DOCUMENTI NECESSARI" />
-                  <div className="chiTabsData">
-                    <p>
-                      Qui potete scaricare tutti i documenti necessari per
-                      l'iscrizione al T.S.N.
-                    </p>
-                    <p>
-                      <Link
-                        title="Atto di assenso"
-                        href="https://www.tsnroma.it/downloads/atto-di-assenso.pdf"
-                      >
-                        Atto di assenso
-                      </Link>
-                      <br />
-                      <Link
-                        title="Facsimile certificato medico"
-                        href="https://www.tsnroma.it/downloads/facsimile-certificato-medico.pdf"
-                      >
-                        Facsimile certificato medico
-                      </Link>
-                    </p>
-                  </div>
-                </Tab.Pane>
-                <Tab.Pane className="TabsPane" eventKey="medico-militare">
-                  <SectionTitle title="MEDICO MILITARE" />
-                  <div className="chiTabsData">
-                    <p>
-                      Si informano i Soci che presso la nostra struttura sono a
-                      disposizione Medici Militari per il rilascio dei
-                      certificati di competenza.
-                    </p>
-                    <p>
-                      I Soci potranno richiedere una riduzione del 30% sulla
-                      tariffa base, esibendo la tessera in corso di validità.
-                    </p>
-                    <p>
-                      Per il rilascio del certificato medico militare occorre
-                      presentare, oltre il certificato anamnestico, anche una
-                      marca da bollo di 16 euro.
-                    </p>
-                    <p>
-                      <strong>PRIMO MEDICO</strong>
-                      <br />
-                      Il primo medico sarà presente nella Nostra Sezione i
-                      seguenti martedì dalle 16.00 alle 17.00: <br />
-                      <br />
-                      <strong>Novembre:</strong> 14, 28 <br />
-                      <strong>Dicembre:</strong> 12, 19 <br />
-                      <br />
-                      Per ulteriori informazioni e prenotazioni chiamare il
-                      numero 347 3336968
-                    </p>
-                    <p>
-                      <strong>SECONDO MEDICO</strong>
-                      <br />
-                      Il secondo medico sarà presente nella Nostra Sezione in
-                      ulteriori giorni e orari: <br />
-                      <br />
-                      <strong>Dicembre:</strong> 02, 17 <br />
-                      <br />
-                      Per ulteriori informazioni e prenotazioni chiamare il
-                      numero 328 1651066
-                    </p>
-                    <p>
-                      I medici saranno presenti nella Nostra Sezione in
-                      ulteriori giorni e orari a partire dal 2024.
-                    </p>
-                  </div>
-                </Tab.Pane>
-                <Tab.Pane className="TabsPane" eventKey="pacchetti-2024">
-                  <SectionTitle title="MEDICO MILITARE" />
-                  <div className="chiTabsData">
-                    <h3>ATTIVITÀ LUDICA</h3>
-                    <TnsTable />
-                    <p>* Fruibile da Marzo 2024</p>
-                  </div>
-                </Tab.Pane>
-                <Tab.Pane className="TabsPane" eventKey="manifesto-uits">
-                  <SectionTitle title="MEDICO MILITARE" />
-                  <div className="chiTabsData">
-                    <p>
-                      <Link
-                        title="Manifesto UITS 2024"
-                        href="https://www.tsnroma.it/downloads/Manifesto UITS 2024.pdf"
-                      >
-                        Manifesto UITS 2024
-                      </Link>{" "}
-                      <br />
-                      <Link
-                        title="Circolare Tesseramento 2024"
-                        href="https://www.tsnroma.it/downloads/Circolare Tesseramento 2024.pdf"
-                      >
-                        Circolare Tesseramento 2024
-                      </Link>
-                    </p>
-                  </div>
-                </Tab.Pane>
-                <Tab.Pane className="TabsPane" eventKey="FAQ">
-                  <SectionTitle title="MEDICO MILITARE" />
-                  <div className="chiTabsData">
-                    <p>
-                      Di seguito troverete alcune domande, con relative
-                      risposte, che spesso ci vengono fatte da chi vuole
-                      iscriversi al T.S.N. <br />
-                      Se hai una domanda che non è presente, puoi inviarcela
-                      scrivendo a{" "}
-                      <a href="mailto:tsnroma@tsnroma.it">
-                        tsnroma@tsnroma.it
-                      </a>{" "}
-                      e provvederemo a risponderti al più presto.
-                    </p>
-                    <div id="faq-container">
-                      <div class="faq">
-                        {faqData.map((item, index) => (
-                          <div key={index}>
-                          <h4 onClick={() => toggleAnswer(index)} style={{cursor:'pointer'}}>{item.question}</h4>
-                          {visibleAnswers[index] && <p>{item.answer}</p>}
-                        </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
+                <Tab.Pane className="TabsPane" eventKey={activeTab}>
+                  <Outlet />
                 </Tab.Pane>
               </Tab.Content>
             </Col>
